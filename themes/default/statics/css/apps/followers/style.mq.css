@@ -1,0 +1,25 @@
+@media (max-width: 1024px) {
+  main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-header div.lp div.profile-name-holder h5 {
+    font-size: 13px;
+    line-height: 14px;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-header div.lp div.profile-name-holder span {
+    font-size: 11px;
+    line-height: 14px; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.profile--connectivity-list-container div.connectivity-list div.connectivity-list-item div.avatar {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    max-width: 30px; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.profile--connectivity-list-container div.connectivity-list div.connectivity-list-item div.user-info-holder a {
+    line-height: 16px;
+    font-size: 11px; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.profile--connectivity-list-container div.connectivity-list div.connectivity-list-item div.user-info-holder p {
+    font-size: 11px;
+    line-height: 16px; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.profile--connectivity-list-container div.connectivity-list div.connectivity-list-item div.user-info-holder button {
+    padding: 5px 10px;
+    font-size: 11px; } }

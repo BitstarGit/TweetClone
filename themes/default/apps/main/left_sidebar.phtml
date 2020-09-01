@@ -1,0 +1,151 @@
+<div class="left-sb-container sidebar" id="left-sb-container" data-app="left-sidebar">
+	<div class="sidebar__inner">
+		<div class="user-info">
+			<div class="avatar">
+				<img src="<?php echo($me['avatar']); ?>" alt="Avatar">
+			</div>
+			<div class="uname">
+				<h5>
+					<span class="user-name-holder <?php if ($me['verified'] == '1') {echo('verified-badge');} ?>">
+						<?php echo($me['name']); ?>
+					</span>
+				</h5>
+				<a href="<?php echo($me['url']); ?>">
+					<?php echo($me['username']); ?>
+				</a>
+			</div>
+		</div>
+		<div class="account-stats">
+			<div class="stat-holder">
+				<b data-an="total-posts"><?php echo cl_number($me['posts']); ?></b>
+				<span><?php echo cl_translate('Posts'); ?></span>
+			</div>
+			<div class="stat-holder">
+				<b data-an="total-following"><?php echo cl_number($me['following']); ?></b>
+				<span><?php echo cl_translate('Following'); ?></span>
+			</div>
+			<div class="stat-holder">
+				<b data-an="total-followers"><?php echo cl_number($me['followers']); ?></b>
+				<span><?php echo cl_translate('Followers'); ?></span>
+			</div>
+		</div>
+		<div class="sidebar-v-nav-wrapper">
+			<ul class="sidebar-v-nav">
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'home') {echo('active');} ?>">
+					<span class="icon">
+						<?php echo cl_svg('home-outline'); ?>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo cl_link('/'); ?>">
+							<?php echo cl_translate('Home'); ?>
+						</a>
+					</span>
+				</li>
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'trending') {echo('active');} ?>">
+					<span class="icon">
+						<?php echo cl_svg('pulse-outline'); ?>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo cl_link('trending'); ?>">
+							<?php echo cl_translate('Actual'); ?>
+						</a>
+					</span>
+				</li>
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'search') {echo('active');} ?>">
+					<span class="icon">
+						<?php echo cl_svg('compass-outline'); ?>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo cl_link("search"); ?>">
+							<?php echo cl_translate('Search'); ?>
+						</a>
+					</span>
+				</li>
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'notifications') {echo('active');} ?>">
+					<span class="icon">
+						<?php echo cl_svg('md-notifications-outline'); ?>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo cl_link("notifications"); ?>">
+							<?php echo cl_translate('Notifications'); ?>
+							<span class="info-indicators" data-an="new-notifs"><?php echo fetch_or_get($me['new_notifs']); ?></span>
+						</a>
+					</span>
+				</li>
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'chat') {echo('active');} ?>">
+					<span class="icon">
+						<?php echo cl_svg('mail-outline'); ?>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo cl_link("chats"); ?>">
+							<?php echo cl_translate('Messages'); ?>
+							<span class="info-indicators" data-an="new-messages"><?php echo fetch_or_get($me['new_messages']); ?></span>
+						</a>
+					</span>
+				</li>
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'bookmarks') {echo('active');} ?>">
+					<span class="icon">
+						<?php echo cl_svg('bookmarks-outline'); ?>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo cl_link("bookmarks"); ?>">
+							<?php echo cl_translate('Bookmarks'); ?>
+						</a>
+					</span>
+				</li>
+				<li class="sidebar-v-nav-item <?php if($cl['pn'] == 'profile' && ($cl['prof_user']['id'] == $me['id'])) {echo('active');} ?>">
+					<span class="icon">
+						<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><title>ionicons-v5-j</title><path d='M258.9,48C141.92,46.42,46.42,141.92,48,258.9,49.56,371.09,140.91,462.44,253.1,464c117,1.6,212.48-93.9,210.88-210.88C462.44,140.91,371.09,49.56,258.9,48ZM385.32,375.25a4,4,0,0,1-6.14-.32,124.27,124.27,0,0,0-32.35-29.59C321.37,329,289.11,320,256,320s-65.37,9-90.83,25.34a124.24,124.24,0,0,0-32.35,29.58,4,4,0,0,1-6.14.32A175.32,175.32,0,0,1,80,259C78.37,161.69,158.22,80.24,255.57,80S432,158.81,432,256A175.32,175.32,0,0,1,385.32,375.25Z'/><path d='M256,144c-19.72,0-37.55,7.39-50.22,20.82s-19,32-17.57,51.93C191.11,256,221.52,288,256,288s64.83-32,67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39,151.44,275.59,144,256,144Z'/></svg>
+					</span>
+					<span class="nav-item-holder">
+						<a href="<?php echo($me["url"]); ?>">
+							<?php echo cl_translate('Profile'); ?>
+						</a>
+					</span>
+				</li> 
+				<li class="sidebar-v-nav-item">
+					<span class="icon">
+						<?php echo cl_svg('md-more'); ?>
+					</span>
+					<span class="nav-item-holder dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<?php echo cl_translate('More'); ?>
+						</a>
+						<div class="dropdown-menu">
+							<?php if (not_empty($cl['is_admin'])): ?>
+								<a class="dropdown-item" href="<?php echo cl_link("admin_panel"); ?>">
+									<?php echo cl_translate('Control panel'); ?>
+								</a>
+							<?php endif; ?>
+							<a class="dropdown-item" href="<?php echo cl_link("settings"); ?>">
+								<?php echo cl_translate('Profile settings'); ?>
+							</a>
+							<a class="dropdown-item" href="<?php echo cl_link("faqs"); ?>">
+								<?php echo cl_translate('Help center'); ?>
+							</a>
+							<a class="dropdown-item" href="<?php echo cl_link("ads"); ?>">
+								<?php echo cl_translate('Advertising'); ?>
+							</a>
+							<a class="dropdown-item" href="<?php echo cl_link("affiliates"); ?>">
+								<?php echo cl_translate('Affiliates'); ?>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="<?php echo cl_link("logout"); ?>">
+								<?php echo cl_translate('Logout'); ?>
+							</a>
+						</div>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<div class="mobile-sb-footer">
+			<?php echo cl_template('main/footer'); ?>
+		</div>
+		<div class="publish-post-btn">
+			<button class="btn btn-custom main-inline lg btn-block" data-toggle="modal" data-target="#add_new_post">
+				<?php echo cl_translate('New post'); ?>
+			</button>
+		</div>
+	</div>
+</div>
+

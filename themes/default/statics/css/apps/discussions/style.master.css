@@ -1,0 +1,31 @@
+main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6ecf0; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar a {
+    flex: 1;
+    text-decoration: none;
+    line-height: 0px;
+    outline: 0; }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar a button.navbar-item-btn {
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: #657786;
+      line-height: 13px;
+      box-shadow: none;
+      border: none;
+      padding: 15px 30px;
+      cursor: pointer;
+      opacity: 0.9;
+      width: 100%;
+      outline: 0; }
+      main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar a button.navbar-item-btn.active {
+        border-bottom: 2px solid #1ca1f3; }
+      main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar a button.navbar-item-btn:hover, main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar a button.navbar-item-btn:active, main.main-content-container div.main-content-container-inner div.timeline-container div.discussions-threads-list-navbar a button.navbar-item-btn:focus {
+        background: #f5f8fa; }
+

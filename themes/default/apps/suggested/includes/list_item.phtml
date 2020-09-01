@@ -1,0 +1,22 @@
+<div class="suggested-list-item" data-list-item="<?php echo($cl['li']['id']); ?>">
+	<div class="avatar">
+		<img src="<?php echo($cl['li']['avatar']); ?>" alt="Avatar">
+	</div>
+	<div class="user-info-holder">
+		<h4>
+			<span class="user-name-holder <?php if ($cl['li']['verified'] == '1') {echo('verified-badge');} ?>">
+				<?php echo cl_croptxt($cl['li']['name'], 15, '..'); ?>
+			</span>
+		</h4>
+		<a href="<?php echo($cl['li']['url']); ?>">
+			<?php echo($cl['li']['username']); ?>
+		</a>
+		<p>
+			<?php echo cl_croptxt($cl['li']['about'],120,'..'); ?>
+		</p>
+
+		<button onclick="SMColibri.follow(this);" class="btn btn-custom md main-outline" data-action="follow" data-id="<?php echo($cl['li']['id']); ?>">
+			<?php echo cl_translate("Follow"); ?>
+		</button>
+	</div>
+</div>

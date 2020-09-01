@@ -1,0 +1,18 @@
+@media (max-width: 1024px) {
+  main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e6ecf0; }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hash {
+      width: 30px;
+      height: 30px;
+      line-height: 28px; }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hashtag-info b.tag {
+      font-size: 13px;
+      line-height: 16px; }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hashtag-info span.total {
+      font-size: 11px;
+      line-height: 16px; } }

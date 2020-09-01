@@ -1,0 +1,54 @@
+main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container {
+  width: 100%;
+  display: block;
+  line-height: 0px; }
+  main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    line-height: 0px;
+    padding: 50px 25px 50px 25px;
+    height: calc(100vh - 55px); }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.icon {
+      line-height: 0px;
+      margin-bottom: 15px;
+      width: 100%;
+      text-align: center; }
+      main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.icon svg {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        vertical-align: middle; }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.pl-message {
+      line-height: 0px;
+      width: 100%;
+      margin-bottom: 50px; }
+      main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.pl-message h4 {
+        font-size: 20px;
+        padding: 0;
+        margin: 0 0 15px 0;
+        line-height: 20px;
+        color: #14171a;
+        font-weight: 700;
+        text-align: center; }
+      main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.pl-message p {
+        font-size: 13px;
+        line-height: 18px;
+        padding: 0;
+        margin: 0;
+        color: #657786;
+        text-align: center;
+        overflow-wrap: break-word; }
+    main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.c2action-single {
+      width: 100%;
+      line-height: 0px;
+      text-align: center; }
+      main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.c2action-single a {
+        display: inline-block;
+        line-height: 0px;
+        text-decoration: none; }
+        main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-comming-soon-page div.c2action-single a button {
+          padding-left: 40px;
+          padding-right: 40px; }
+

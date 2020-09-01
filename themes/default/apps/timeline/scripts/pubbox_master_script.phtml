@@ -1,0 +1,627 @@
+<script>
+	
+	"use strict";
+
+	$(document).ready(function($) {
+		const pubbox_form_app_mixin = Object({
+			data: function() {
+				return {
+					text: "",
+					images: [],
+					video: {},
+					gifs_r1: [],
+					gifs_r2: [],
+					image_ctrl: true,
+					video_ctrl: true,
+					gif_ctrl: true,
+					submitting: false,
+					active_media: null,
+					gif_source: null
+				};
+			},
+			computed: {
+				valid_form: function() {
+					let app = this;
+					if (app.text.length && cl_empty(app.submitting)) {
+						return true;
+					}
+
+					else if(app.images.length >= 1 && cl_empty(app.submitting)) {
+						return true;
+					}
+
+					else if($.isEmptyObject(app.video) != true && cl_empty(app.submitting)) {
+						return true;
+					}
+
+					else if(app.gif_source) {
+						return true;
+					}
+
+					return false;
+				},
+				equal_height: function() {
+					let app_el = $(this.$el);
+
+					return "{0}px".format((app_el.innerWidth() / 4));
+				},
+				preview_video: function() {
+					if ($.isEmptyObject(this.video)) {
+						return false;
+					}
+
+					return true;
+				},
+				gifs: function() {
+					if (this.gifs_r1.length || this.gifs_r2.length) {
+						return true;
+					}
+
+					return false;
+				},
+ 			},
+			methods: {
+				emoji_picker: function(action = "toggle") {
+					let app_el = $(this.$el);
+					let app    = this;
+					if (app_el.length) {
+						if (action == "toggle") {
+							if (app_el.find('textarea#post-text').get(0).emojioneArea.isOpened()) {
+								app_el.find('textarea#post-text').get(0).emojioneArea.hidePicker();
+							}
+							
+							else {
+								app_el.find('textarea#post-text').get(0).emojioneArea.showPicker();
+								app.rep_emoji_picker();
+							}
+						}
+
+						else if(action == "open") {
+							if (app_el.find('textarea#post-text').get(0).emojioneArea.isOpened() != true) {
+								app_el.find('textarea#post-text').get(0).emojioneArea.showPicker();
+								app.rep_emoji_picker();
+							}
+						}
+
+						else if(action == "close") {
+							if (app_el.find('textarea#post-text').get(0).emojioneArea.isOpened()) {
+								app_el.find('textarea#post-text').get(0).emojioneArea.hidePicker();
+							}
+						}
+					}
+				},
+				rep_emoji_picker: function() {
+					let app_el = $(this.$el);
+					app_el.find('div.emojionearea-picker').css("top","{0}px".format(app_el.height() + 20));
+				},
+				textarea_resize: function(_self = null) {
+					autosize($(_self.target));
+				},
+				publish: function(_self = null) {
+					_self.preventDefault();
+
+					let form         = $(_self.$el);
+					let app          = this;
+					let main_left_sb = $('div[data-app="left-sidebar"]');
+
+					$(_self.target).ajaxSubmit({
+						url: "<?php echo cl_link("native_api/main/publish_new_post"); ?>",
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							gif_src: app.gif_source,
+							thread_id: ((app.thread_id) ? app.thread_id : 0),
+							curr_pn: SMColibri.curr_pn
+						},
+						beforeSend: function() {
+							app.submitting = true;
+						},
+						success: function(data) {
+							if (data.status == 200) {
+								if (SMColibri.curr_pn == "home") {
+									let home_timeline = $('div[data-app="homepage"]');
+									let new_post      = $(data.html).addClass('animated fadeIn');
+
+									if (home_timeline.find('div[data-an="entry-list"]').length) {
+										home_timeline.find('div[data-an="entry-list"]').prepend(new_post).promise().done(function() {
+											SMColibri.update_afterglow();
+
+											delay(function() {
+												new_post.removeClass('animated');
+												new_post.removeClass('fadeIn');
+											}, 1000);
+										});
+									}
+									else {
+										$(window).reloadPage(300);
+									}
+									
+								}
+								else if(SMColibri.curr_pn == "thread" && app.thread_id) {
+									app.thread_id       = 0;
+									let thread_timeline = $('div[data-app="thread"]');
+									let new_post        = $(data.html).addClass('animated fadeIn');
+
+									if(thread_timeline.find('div[data-an="replys-list"]').length) {
+										thread_timeline.find('div[data-an="replys-list"]').prepend(new_post).promise().done(function() {
+											SMColibri.update_afterglow();
+
+											delay(function() {
+												new_post.removeClass('animated');
+												new_post.removeClass('fadeIn');
+											}, 1000);
+										});
+									}
+									else {
+										$(window).reloadPage(300);
+									}
+
+									thread_timeline.find('[data-an="pub-replys-total"]').text(data.replys_total);
+								}
+								else {
+									cl_bs_notify("<?php echo cl_translate("Your new publication has been posted on your timeline"); ?>", 1200);
+								}
+
+								if($(app.$el).attr('id') == 'vue-pubbox-app-2') {
+									$(app.$el).parents("div#add_new_post").modal('hide');
+								}
+
+								if (data.posts_total) {
+									main_left_sb.find('b[data-an="total-posts"]').text(data.posts_total);
+								}
+							}
+
+							else {
+								app.submitting = false;
+								cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+							}
+						},
+						complete: function() {
+							app.submitting = false;
+							app.reset_data();
+
+							SMColibri.update_afterglow();
+						}
+					});
+				},
+				select_images: function() {
+					if (this.active_media == 'image' || cl_empty(this.active_media)) {
+						if (this.image_ctrl) {
+							let app_el = $(this.$el);
+							app_el.find('input[data-an="images-input"]').trigger('click');
+						}
+					}
+				},
+				select_video: function() {
+					if (cl_empty(this.active_media)) {
+						if (this.video_ctrl) {
+							let app_el = $(this.$el);
+							app_el.find('input[data-an="video-input"]').trigger('click');
+						}
+					}
+				},
+				select_gifs: function() {
+					let app  = this;
+					let step = false;
+
+					if (cl_empty(this.active_media)) {
+						$.ajax({
+							url: 'https://api.giphy.com/v1/gifs/trending',
+							type: 'GET',
+							dataType: 'json',
+							data: {
+								api_key: '{%config giphy_api_key%}',
+								limit: 50,
+								lang:'en',
+								fmt:'json'
+							},
+						}).done(function(data) {
+							if (data.meta.status == 200 && data.data.length > 0) {
+								for (var i = 0; i < data.data.length; i++) {
+									if (step) {
+										app.gifs_r1.push({
+											thumb: data['data'][i]['images']['preview_gif']['url'],
+											src: data['data'][i]['images']['original']['url'],
+										});
+									}
+									else {
+										app.gifs_r2.push({
+											thumb: data['data'][i]['images']['preview_gif']['url'],
+											src: data['data'][i]['images']['original']['url'],
+										});
+									}
+
+									step = !step;
+								}
+							}
+						}).always(function() {
+							if (app.gifs && cl_empty(app.active_media)) {
+								app.active_media = "gifs";
+							}
+
+							app.disable_ctrls();
+						});
+					}
+				},
+				search_gifs: function(_self = null) {
+					if (_self.target.value.length >= 2) {
+						let query   = $.trim(_self.target.value);
+						let step    = false;
+						let app     = this;
+						let gifs_r1 = app.gifs_r1;
+						let gifs_r2 = app.gifs_r2;
+
+						$.ajax({
+							url: 'https://api.giphy.com/v1/gifs/search',
+							type: 'GET',
+							dataType: 'json',
+							data: {
+								q: query,
+								api_key:'{%config giphy_api_key%}',
+								limit: 50,
+								lang:'en',
+								fmt:'json'
+							}
+						}).done(function(data) {
+							if (data.meta.status == 200 && data.data.length > 0) {
+								app.gifs_r1 = [];
+								app.gifs_r2 = [];
+
+								for (var i = 0; i < data.data.length; i++) {
+									if (step) {
+										app.gifs_r1.push({
+											thumb: data['data'][i]['images']['preview_gif']['url'],
+											src: data['data'][i]['images']['original']['url'],
+										});
+									}
+									else {
+										app.gifs_r2.push({
+											thumb: data['data'][i]['images']['preview_gif']['url'],
+											src: data['data'][i]['images']['original']['url'],
+										});
+									}
+
+									step = !step;
+								}
+							}
+							else {
+								app.gifs_r1 = gifs_r1;
+								app.gifs_r2 = gifs_r2;
+							}
+						});
+					}
+				},
+				preview_gif: function(_self = null) {
+					if (_self.target) {
+						this.gif_source = $(_self.target).data('source');
+					}
+				},
+				rm_preview_gif: function() {
+					this.gif_source = null;
+				},
+				close_gifs: function() {
+					let app          = this;
+					app.gifs_r1      = [];
+					app.gifs_r2      = [];
+					app.active_media = null;
+					app.disable_ctrls();
+				},
+				rm_gif_preloader(_self = null) {
+					if (_self.target) {
+						$(_self.target).siblings('div').remove();
+						$(_self.target).parent('div').removeClass('loading');
+					}
+				},
+				upload_images: function(event = null) {
+					let app    = this;
+					let app_el = $(app.$el);
+
+					if (cl_empty(app.active_media) || app.active_media == 'image') {
+						let images = event.target.files;
+						if (images.length) {
+							for (var i = 0; i < images.length; i++) {
+								let form_data  = new FormData();
+								let break_loop = false;
+								form_data.append('image', images[i]);
+								form_data.append('hash', "<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>");
+								
+								$.ajax({
+									url: '<?php echo cl_link("native_api/main/upload_post_image"); ?>',
+									type: 'POST',
+									dataType: 'json',
+									enctype: 'multipart/form-data',
+									data: form_data,
+									cache: false,
+							        contentType: false,
+							        processData: false,
+							        timeout: 600000,
+							        beforeSend: function() {
+							        	app.submitting = true;
+							        },
+									success: function(data) {
+										if (data.status == 200) {
+											app.images.push(data.img);
+										}
+										else if(data.err_code == "total_limit_exceeded") {
+											cl_bs_notify("<?php echo cl_translate("You cannot attach more than 10 images to this post."); ?>",1500);
+											break_loop = true;
+										}
+										else {
+											cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+										}
+									},
+									complete: function() {
+										if (app.images.length && cl_empty(app.active_media)) {
+											app.active_media = "image";
+										}
+
+										app.disable_ctrls();
+
+										app.submitting = false;
+									}
+								});
+
+								if (break_loop) {break;}
+							}
+						}
+
+						app_el.find('input[data-an="images-input"]').val('');
+					}
+				},
+				upload_video: function(event = null) {
+					let app    = this;
+					let app_el = $(app.$el);
+
+					if (cl_empty(app.active_media)) {
+						let video  = event.target.files[0];
+						if (video) {
+							let form_data = new FormData();
+							form_data.append('video', video);
+							form_data.append('hash', "<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>");
+
+							$.ajax({
+								url: '<?php echo cl_link("native_api/main/upload_post_video"); ?>',
+								type: 'POST',
+								dataType: 'json',
+								enctype: 'multipart/form-data',
+								data: form_data,
+								cache: false,
+						        contentType: false,
+						        processData: false,
+						        timeout: 600000,
+								success: function(data) {
+									if (data.status == 200) {
+										app.video = data.video;
+									}
+									else if(data.err_code == "total_limit_exceeded") {
+										cl_bs_notify("<?php echo cl_translate("You cannot attach more than 1 video to this post."); ?>",1500);
+									}
+									else {
+										cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+									}
+								},
+								complete: function() {
+									if ($.isEmptyObject(app.video) != true && cl_empty(app.active_media)) {
+										app.active_media = "video";
+									}
+
+									app.disable_ctrls();
+									app_el.find('input[data-an="video-input"]').val('');
+								}
+							});
+						}
+					}
+				},
+				delete_image: function(id = null) {
+					if (cl_empty(id)) {
+						return false;
+					}
+
+					else {
+						let app = this;
+						for (var i = 0; i < app.images.length; i++) {
+							if (app.images[i]['id'] == id) {
+								app.images.splice(i, 1);
+							}
+						}
+
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/delete_post_image"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							data: {image_id: id},
+						}).done(function(data) {
+							if (data.status != 200) {
+								cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+							}
+						}).always(function() {
+							if (cl_empty(app.images.length)) {
+								app.active_media = null;
+							}
+
+							app.disable_ctrls();
+						});
+					}
+				},
+				delete_video: function() {
+					let app = this;
+					$.ajax({
+						url: '<?php echo cl_link("native_api/main/delete_post_video"); ?>',
+						type: 'POST',
+						dataType: 'json',
+					}).done(function(data) {
+						if (data.status != 200) {
+							cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+						}
+						else {
+							app.video = Object({});
+						}
+					}).always(function() {
+						if ($.isEmptyObject(app.video)) {
+							app.active_media = null;
+						}
+
+						app.disable_ctrls();
+					});
+				},
+				disable_ctrls: function() {
+					if (this.active_media == 'image' && this.images.length >= 10) {
+						this.image_ctrl = false;
+						this.gif_ctrl   = false;
+						this.video_ctrl = false;
+					}
+					else if(this.active_media == 'image' && this.images.length < 10) {
+						this.image_ctrl = true;
+						this.gif_ctrl   = false;
+						this.video_ctrl = false;
+					}
+					else if(this.active_media != null) {
+						this.image_ctrl = false;
+						this.gif_ctrl   = false;
+						this.video_ctrl = false;
+					}
+					else {
+						this.image_ctrl = true;
+						this.gif_ctrl   = true;
+						this.video_ctrl = true;
+					}
+				},
+				reset_data: function() {
+					this.image_ctrl   = true;
+					this.gif_ctrl     = true;
+					this.video_ctrl   = true;
+					this.text         = "";
+					this.images       = [];
+					this.video        = {};
+					this.active_media = null;
+					this.gif_source   = null;
+					this.gifs_r1      = [];
+					this.gifs_r2      = [];
+					$(this.$el).find('textarea#post-text').get(0).emojioneArea.setText("");
+					this.rep_emoji_picker();
+				}
+			},
+			updated: function() {
+				if ($.isEmptyObject(this.video) != true) {
+					SMColibri.update_afterglow();
+				}
+
+				this.rep_emoji_picker();
+			},
+			mounted: function() {
+				if ($.isEmptyObject(this.video) != true) {
+					SMColibri.update_afterglow();
+				}
+
+				<?php if (not_empty($me['draft_post'])): ?>
+					if ($(this.$el).attr('id') == 'vue-pubbox-app-1') {
+						let app = this;
+						delay(function() {
+							$.ajax({
+								url: "<?php echo cl_link("native_api/main/get_draft_post"); ?>",
+								type: 'GET',
+								dataType: 'json'
+							}).done(function(data) {
+								if (data.status == 200 && data.type == "image") {
+									app.images       = data.images;
+									app.active_media = 'image';
+								}
+								else if(data.status == 200 && data.type == "video") {
+									app.video        = data.video;
+									app.active_media = 'video';
+								}
+								else {
+									return false;
+								}
+
+								if (data.status == 200) {
+									cl_bs_notify("<?php echo cl_translate("Please finish editing the post or delete media files!"); ?>",3000);
+								}
+							}).always(function() {
+								app.disable_ctrls();
+							});
+						}, 1500);
+					}
+				<?php endif; ?>
+			}
+		});
+
+		const emoji_filters = Object({
+			recent: {
+				title: "<?php echo cl_translate("Recent"); ?>"
+			},
+			smileys_people: {
+		        title: "<?php echo cl_translate("Emoticons and People"); ?>",
+		    },
+			animals_nature: {
+		        title: "<?php echo cl_translate("Animals & Nature"); ?>",
+		    },
+			food_drink: {
+		        title: "<?php echo cl_translate("Food & Drink"); ?>",
+		    },
+			activity: {
+		        title: "<?php echo cl_translate("Activity"); ?>",
+		    },
+			travel_places: {
+		        title: "<?php echo cl_translate("Travel & Places"); ?>",
+		    },
+			objects: {
+		        title: "<?php echo cl_translate("Objects"); ?>",
+		    },
+			symbols: {
+		        title: "<?php echo cl_translate("Symbols"); ?>",
+		    },
+			flags: {
+		        title: "<?php echo cl_translate("Flags"); ?>",
+		    }
+		});
+
+		if ($("form#vue-pubbox-app-1").length) {
+			const pubbox_app_1 = new Vue({
+				el:"#vue-pubbox-app-1",
+				mixins: [pubbox_form_app_mixin]
+			});
+
+			$(pubbox_app_1.$el).find('textarea#post-text').emojioneArea({
+				pickerPosition: "bottom",
+				search: false,
+				filters: emoji_filters
+			});
+
+			$(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.on('emojibtn.click', function(event) {
+				pubbox_app_1.text = $(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.getText();
+			});
+
+			$(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.on('keyup', function(event) {
+				pubbox_app_1.text = $(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.getText();
+			});
+		}
+		
+		if ($("form#vue-pubbox-app-2").length) {
+			const pubbox_app_2 = new Vue({
+				el:"#vue-pubbox-app-2",
+				mixins: [pubbox_form_app_mixin]
+			});
+
+			$(pubbox_app_2.$el).find('textarea#post-text').emojioneArea({
+				pickerPosition: "bottom",
+				search: false,
+				filters: emoji_filters
+			});
+
+			$(pubbox_app_2.$el).find('textarea#post-text').get(0).emojioneArea.on('emojibtn.click', function(event) {
+				pubbox_app_2.text = $(pubbox_app_2.$el).find('textarea#post-text').get(0).emojioneArea.getText();
+			});
+
+			$(pubbox_app_2.$el).find('textarea#post-text').get(0).emojioneArea.on('keyup', function(event) {
+				pubbox_app_2.text = $(pubbox_app_2.$el).find('textarea#post-text').get(0).emojioneArea.getText();
+			});
+
+			SMColibri.extend_vue('pubbox2', pubbox_app_2);
+
+			$(document).on('hidden.bs.modal','div#add_new_post', function () {  
+		        pubbox_app_2.thread_id = 0;
+		    });
+		}
+	});
+</script>
