@@ -176,7 +176,7 @@
 				},
 				is_valid_password2: function() {	
 					if(this.$v.password2.required == true && this.$v.password2.$error) {
-						this.invalid_feedback_pass2 = "<?php echo cl_translate("Passwords do not mutch!"); ?>";
+						this.invalid_feedback_pass2 = "<?php echo cl_translate("Passwords do not match!"); ?>";
 						return true;
 					}
 
@@ -390,7 +390,7 @@
 					},
 					is_valid_password2: function() {	
 						if(this.$v.password2.required == true && this.$v.password2.$error) {
-							this.invalid_feedback_pass2 = "<?php echo cl_translate("Passwords do not mutch!"); ?>";
+							this.invalid_feedback_pass2 = "<?php echo cl_translate("Passwords do not match!"); ?>";
 							return true;
 						}
 
