@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a54d03ff-537b-495d-b376-ea590d115937" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/langs/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/core/langs/default.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/libs/DB/vendor/thingengineer/mysqli-database-class/MysqliDb.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/libs/DB/vendor/thingengineer/mysqli-database-class/MysqliDb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/about_us/src/source.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/about_us/src/source.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/auth/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/auth/login.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/cookies_policy/src/source.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/cookies_policy/src/source.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/faqs/src/source.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/faqs/src/source.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/guest/content.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/guest/content.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/main/left_sidebar.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/main/left_sidebar.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/privacy_policy/src/source.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/privacy_policy/src/source.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/terms/src/source.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/terms/src/source.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/1-1920x1080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/1-1920x1080.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/2-1920x1080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/2-1920x1080.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/3-1920x1080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/3-1920x1080.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/4-1920x1080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/4-1920x1080.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/5-1920x1080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/statics/img/welcomewp/5-1920x1080.jpeg" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1689568783">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="php" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PHP" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="json" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JSON" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/init.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-300" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>$sql_db_name</find>
+      <find>Passwords do not mutch</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/core/init.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-184" />
+    <option name="y" value="156" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/install/index.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.index.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea55ddf6-b328-4bd0-bde3-d46d7169f346" name="Default Changelist" comment="" />
+      <created>1599044241373</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599044241373</updated>
+      <workItem from="1599044246640" duration="793000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2056000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1933" y="5" width="1936" height="1056" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/core/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
