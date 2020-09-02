@@ -392,7 +392,7 @@
 				},
 				is_valid_password3: function() {	
 					if(this.$v.password3.required == true && this.$v.password3.$error) {
-						this.invalid_feedback_pass3 = "<?php echo cl_translate("Passwords do not mutch!"); ?>";
+						this.invalid_feedback_pass3 = "<?php echo cl_translate("Passwords do not match!"); ?>";
 						return true;
 					}
 
