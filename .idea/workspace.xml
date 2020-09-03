@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a54d03ff-537b-495d-b376-ea590d115937" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/langs/english.json" beforeDir="false" afterPath="$PROJECT_DIR$/core/langs/english.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/default/apps/auth/scripts/app_master_script.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/auth/scripts/app_master_script.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/default/apps/settings/scripts/app_master_script.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/settings/scripts/app_master_script.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/native/ajax/auth/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/apps/native/ajax/auth/content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/auth/register.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/auth/register.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/main/scripts/app_master_script.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/main/scripts/app_master_script.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/default/apps/timeline/post.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/default/apps/timeline/post.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,62 +18,101 @@
     <session id="-1689568783">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="json" value="4" />
-          <entry key="php" value="1" />
-          <entry key="phtml" value="3" />
+          <entry key="php" value="15" />
+          <entry key="phtml" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="4" />
-          <entry key="PHP" value="4" />
+          <entry key="PHP" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="15" />
-          <entry key="phtml" value="3" />
+          <entry key="php" value="133" />
+          <entry key="phtml" value="402" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="15" />
-          <entry key="PHP" value="3" />
+          <entry key="PHP" value="535" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/langs/english.json">
+        <entry file="file://$PROJECT_DIR$/apps/native/ajax/auth/content.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="31" column="45" lean-forward="true" selection-end-line="765" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/default/apps/auth/scripts/app_master_script.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="403" column="21" lean-forward="true" selection-end-line="447" selection-end-column="14" />
+            <state relative-caret-position="371">
+              <caret line="109" column="55" lean-forward="true" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/default/apps/settings/scripts/app_master_script.phtml">
+        <entry file="file://$PROJECT_DIR$/themes/default/apps/main/scripts/app_master_script.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+            <state relative-caret-position="50">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#13#736#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/components/tools.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2050">
+              <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+              <folding>
+                <element signature="e#7#84#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/components/shortcuts.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1025">
+              <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/native/ajax/main/content.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11150">
+              <caret line="454" column="29" selection-start-line="454" selection-end-line="455" />
+              <folding>
+                <element signature="e#7#84#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/components/user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4200">
+              <caret line="176" column="9" selection-start-line="176" selection-start-column="9" selection-end-line="176" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -84,9 +124,25 @@
       <find>$sql_db_name</find>
       <find>passwords_do_not_mutch</find>
       <find>Passwords do not mutch</find>
-      <find>do not</find>
       <find>cl_hashtags</find>
+      <find>show thread</find>
+      <find>ksun</find>
+      <find>do not</find>
+      <find>native_api</find>
+      <find>data: {</find>
+      <find>onclick=&quot;SMColibri.follow(this);&quot;</find>
+      <find>submit_form</find>
+      <find>main_signup_form</find>
+      <find>T_Connect</find>
+      <find>cl_configs</find>
+      <find>if (cl_follow($me['id'], $user_id))</find>
+      <find>$me</find>
+      <find>cl_follow</find>
+      <find>follow</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\crumbb\apps\native\ajax\main</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,6 +153,10 @@
         <option value="$PROJECT_DIR$/core/init.php" />
         <option value="$PROJECT_DIR$/core/langs/italian.json" />
         <option value="$PROJECT_DIR$/core/langs/english.json" />
+        <option value="$PROJECT_DIR$/themes/default/apps/timeline/post.phtml" />
+        <option value="$PROJECT_DIR$/themes/default/apps/main/scripts/app_master_script.phtml" />
+        <option value="$PROJECT_DIR$/themes/default/apps/auth/register.phtml" />
+        <option value="$PROJECT_DIR$/apps/native/ajax/auth/content.php" />
       </list>
     </option>
   </component>
@@ -106,7 +166,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-184" />
     <option name="y" value="156" />
     <option name="width" value="1936" />
@@ -118,23 +178,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
               <item name="crumbb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="langs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
@@ -147,11 +197,51 @@
               <item name="themes" type="462c0819:PsiDirectoryNode" />
               <item name="default" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="timeline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crumbb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crumbb" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="timeline" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,20 +277,23 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ea55ddf6-b328-4bd0-bde3-d46d7169f346" name="Default Changelist" comment="" />
+      <changelist id="a54d03ff-537b-495d-b376-ea590d115937" name="Default Changelist" comment="" />
       <created>1599044241373</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599044241373</updated>
       <workItem from="1599044246640" duration="793000" />
+      <workItem from="1599116072561" duration="599000" />
+      <workItem from="1599118306317" duration="931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5243000" />
+    <option name="totallyTimeSpent" value="29799000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -230,13 +323,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/init.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/langs/turkish.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -261,7 +347,7 @@
     <entry file="file://$PROJECT_DIR$/core/langs/english.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
-          <caret line="31" column="45" lean-forward="true" selection-end-line="765" selection-end-column="1" />
+          <caret line="31" column="45" selection-end-line="765" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -270,17 +356,136 @@
         <state relative-caret-position="-300" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/default/apps/auth/scripts/app_master_script.phtml">
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/settings/scripts/app_master_script.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="403" column="21" lean-forward="true" selection-end-line="447" selection-end-column="14" />
+        <state relative-caret-position="294">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/default/apps/settings/scripts/app_master_script.phtml">
+    <entry file="file://$PROJECT_DIR$/update.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+        <state relative-caret-position="575">
+          <caret line="46" column="8" selection-start-line="46" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1246">
+          <caret line="111" column="48" selection-start-line="111" selection-start-column="48" selection-end-line="111" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/definitions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/timeline/post.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="300" column="59" selection-start-line="300" selection-start-column="59" selection-end-line="300" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/connections/includes/list_item.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/home/content.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/suggested/includes/list_item.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/native/http/oauth/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1979" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/auth/register.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="6" column="59" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/auth/scripts/app_master_script.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1575">
+          <caret line="231" column="65" selection-start-line="231" selection-start-column="61" selection-end-line="231" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/native/ajax/auth/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="109" column="55" lean-forward="true" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/components/tools.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2050">
+          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+          <folding>
+            <element signature="e#7#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/components/shortcuts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1025">
+          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/native/ajax/main/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11150">
+          <caret line="454" column="29" selection-start-line="454" selection-end-line="455" />
+          <folding>
+            <element signature="e#7#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/components/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4200">
+          <caret line="176" column="9" selection-start-line="176" selection-start-column="9" selection-end-line="176" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/apps/main/scripts/app_master_script.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#13#736#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>
