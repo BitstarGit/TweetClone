@@ -330,7 +330,7 @@
 
             _smc.share_post = function (url = false, encoded_url = false) {
                 if (url && encoded_url) {
-                    var modal = "<div class='modal fadeIn share-post-modal vh-center' data-an='share-post' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-header'><div class='main---mh--block'><h5 class='modal-title'><?php echo cl_translate('Share post'); ?></h5><span class='dismiss-modal' data-dismiss='modal'><?php echo str_replace('"', '\'', cl_svg('md-close')); ?></span></div></div><div class='modal-body'><div class='social-media-links'><a href='https://twitter.com/intent/tweet?url={0}' target='_black' class='link-item twitter'><?php echo str_replace('"', '\'', cl_svg('logo-twitter')); ?></a><a href='https://www.facebook.com/sharer.php?u={0}' target='_black' class='link-item facebook'><?php echo str_replace('"', '\'', cl_svg('logo-facebook')); ?></a><a href='https://www.linkedin.com/shareArticle?mini=true&url={0}' target='_black' class='link-item linkedin'><?php echo str_replace('"', '\'', cl_svg('logo-linkedin')); ?></a><a href='https://www.pinterest.ru/pin/create/button/?url={0}' target='_black' class='link-item pinterest'><?php echo str_replace('"', '\'', cl_svg('logo-pinterest')); ?></a><a href='https://www.reddit.com/submit?url={0}' target='_black' class='link-item reddit'><?php echo str_replace('"', '\'', cl_svg('logo-reddit')); ?></a></div><div class='raw-link'><p><?php echo cl_translate('Or copy link'); ?></p><div class='link-input'><input type='text' readonly='true' value='{1}' id='copy-link-input'><button data-clipboard-target='#copy-link-input' data-clipboard-action='copy' class='clip-board-copy copy-link'><?php echo str_replace('"', '\'', cl_svg('copy-outline')); ?></button></div></div></div></div></div></div>";
+                    var modal = "<div class='modal fadeIn share-post-modal vh-center' data-an='share-post' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-header'><div class='main---mh--block'><h5 class='modal-title'><?php echo cl_translate('Share post'); ?></h5><span class='dismiss-modal' data-dismiss='modal'><?php echo str_replace('"', '\'', cl_svg('md-close')); ?></span></div></div><div class='modal-body'><div class='social-media-links'><a href='https://twitter.com/intent/tweet?url={0}' target='_black' class='link-item twitter'><?php echo str_replace('"', '\'', cl_svg('logo-twitter')); ?></a><a href='https://www.facebook.com/sharer.php?u={0}' target='_black' class='link-item facebook'><?php echo str_replace('"', '\'', cl_svg('logo-facebook')); ?></a><a href='https://www.linkedin.com/shareArticle?mini=true&url={0}' target='_black' class='link-item linkedin'><?php echo str_replace('"', '\'', cl_svg('logo-linkedin')); ?></a><a href='https://www.pinterest.ru/pin/create/button/?url={0}' target='_black' class='link-item pinterest'><?php echo str_replace('"', '\'', cl_svg('logo-pinterest')); ?></a><a href='https://www.reddit.com/submit?url={0}' target='_black' class='link-item reddit'><?php echo str_replace('"', '\'', cl_svg('logo-reddit')); ?></a></div><div class='raw-link'><p><?php echo cl_translate('Or copy link'); ?></p><div class='link-input'><input type='text' readonly='true' value='{1}' id='copy-link-input'><button data-clipboard-target='#copy-link-input' data-clipboard-action='copy' class='   clip-board-copy copy-link'><?php echo str_replace('"', '\'', cl_svg('copy-outline')); ?></button></div></div></div></div></div></div>";
                     var modal = modal.format(encoded_url, url);
 
                     $('body').find('[data-app="black-hole"]').append($(modal)).promise().done(function () {
@@ -358,24 +358,26 @@
             }
 //          author: KSUN
 //          func: report
-//            _smc.show_report = function (id = false, reportId = false) {
-//                if ($.isNumeric(id) && id) {
-//                    let _reportId = $(reportId);
-//                    $.ajax({
-//                        url: '<?php //echo cl_link(); ?>//'
-//                        type: 'POST'
-//                        dataType: 'json'
-//                        data:{id: id, content: reportId},
-//                    }).done(function (data){
-//                        if (data.status == 200){
-//
-//                        }
-//                        else{
-//                            cl_bs_notify("<?php //echo cl_translate("An error occurred while processing your request. Please try again later."); ?>//", 3000);
-//                        }
-//                    });
-//                }
-//            }
+            _smc.report_post = function (id = false) {
+                if ($.isNumeric(id) && id ) {
+                    var modal = "<div class='modal fadeIn share-post-modal vh-center' data-an='share-post' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-header'><div class='main---mh--block'><h5 class='modal-title'><?php echo cl_translate('Report an issue'); ?></h5><span class='dismiss-modal' data-dismiss='modal'><?php echo str_replace('"', '\'', cl_svg('md-close')); ?></span></div></div><div class='modal-body'><div " +
+                        "class='modal-body'> <div class='report-post-container'>" +
+                        "<p><?php echo cl_translate('Help us understand the problem. What is going on with this Post?'); ?></p>" +
+                        "<div class='raw-link'> " +
+                        "<ul>" +
+                        "<li><a class='dropdown'><?php echo cl_translate('I am not interesetd in this Post'); ?></a></li>" +
+                        "<li><a class='dropdown'><?php echo cl_translate('It is suspicious or spam'); ?></a></li>" +
+                        "<li><a class='dropdown'><?php echo cl_translate('It is abusive or harmful'); ?></a></li>" +
+                        "<li><a class='dropdown'><?php echo cl_translate('It is misleading about a political election or other civic event'); ?></a></li>" +
+                        "<li><a class='dropdown'><?php echo cl_translate('It expresses intentions of self-harm or suicide'); ?></a></li>" +
+                        "</ul></div> </div> </div> </div> </div> </div>";
+                    // var modal = modal.format(encoded_url, url);
+
+                    $('body').find('[data-app="black-hole"]').append($(modal)).promise().done(function () {
+                        $('body').find('[data-app="black-hole"]').find('[data-an="share-post"]').modal('show');
+                    });
+                }
+            }
 
             _smc.bookmark_post = function (id = false, _self = false) {
                 if (_smc.is_logged()) {
