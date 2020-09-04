@@ -359,22 +359,42 @@
 //          author: KSUN
 //          func: report
             _smc.report_post = function (id = false) {
-                if ($.isNumeric(id) && id ) {
-                    var modal = "<div class='modal fadeIn share-post-modal vh-center' data-an='share-post' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-header'><div class='main---mh--block'><h5 class='modal-title'><?php echo cl_translate('Report an issue'); ?></h5><span class='dismiss-modal' data-dismiss='modal'><?php echo str_replace('"', '\'', cl_svg('md-close')); ?></span></div></div><div class='modal-body'><div " +
+                if ($.isNumeric(id) && id) {
+                    var modal = "<div class='modal fadeIn share-post-modal vh-center' data-an='report-post' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-header'><div class='main---mh--block'><h5 class='modal-title'><?php echo cl_translate('Report an issue'); ?></h5><span class='dismiss-modal' data-dismiss='modal'><?php echo str_replace('"', '\'', cl_svg('md-close')); ?></span></div></div><div class='modal-body'><div " +
                         "class='modal-body'> <div class='report-post-container'>" +
                         "<p><?php echo cl_translate('Help us understand the problem. What is going on with this Post?'); ?></p>" +
                         "<div class='raw-link'> " +
                         "<ul>" +
-                        "<li><a class='dropdown'><?php echo cl_translate('I am not interesetd in this Post'); ?></a></li>" +
-                        "<li><a class='dropdown'><?php echo cl_translate('It is suspicious or spam'); ?></a></li>" +
-                        "<li><a class='dropdown'><?php echo cl_translate('It is abusive or harmful'); ?></a></li>" +
-                        "<li><a class='dropdown'><?php echo cl_translate('It is misleading about a political election or other civic event'); ?></a></li>" +
-                        "<li><a class='dropdown'><?php echo cl_translate('It expresses intentions of self-harm or suicide'); ?></a></li>" +
+                        "<li><a onclick=\"SMColibri.report_an_issue('<?php echo $cl['li']['id']; ?>', '<?php echo 0; ?>');\" class='dropdown'><?php echo cl_translate('I am not interesetd in this Post'); ?></a></li>" +
+                        "<li><a onclick=\"SMColibri.report_an_issue('<?php echo $cl['li']['id']; ?>', '<?php echo 1; ?>');\" class='dropdown'><?php echo cl_translate('It is suspicious or spam'); ?></a></li>" +
+                        "<li><a onclick=\"SMColibri.report_an_issue('<?php echo $cl['li']['id']; ?>', '<?php echo 2; ?>');\" class='dropdown'><?php echo cl_translate('It is abusive or harmful'); ?></a></li>" +
+                        "<li><a onclick=\"SMColibri.report_an_issue('<?php echo $cl['li']['id']; ?>', '<?php echo 3; ?>');\" class='dropdown'><?php echo cl_translate('It is misleading about a political election or other civic event'); ?></a></li>" +
+                        "<li><a onclick=\"SMColibri.report_an_issue('<?php echo $cl['li']['id']; ?>', '<?php echo 4; ?>');\" class='dropdown'><?php echo cl_translate('It expresses intentions of self-harm or suicide'); ?></a></li>" +
                         "</ul></div> </div> </div> </div> </div> </div>";
-                    // var modal = modal.format(encoded_url, url);
 
                     $('body').find('[data-app="black-hole"]').append($(modal)).promise().done(function () {
-                        $('body').find('[data-app="black-hole"]').find('[data-an="share-post"]').modal('show');
+                        $('body').find('[data-app="black-hole"]').find('[data-an="report-post"]').modal('show');
+                    });
+                }
+            }
+
+            _smc.report_an_issue = function (postId = false, reportId = false) {
+                if ($.isNumeric(postId) && postId && $.isNumeric(reportId) && reportId) {
+                    $.ajax({
+                        url: '<?php echo cl_link("native_api/main/report_an_issue"); ?>',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {postId: postId, reportId: reportId},
+                    }).done(function (data) {
+                        // alert(data.message);
+                        if (data.status == 200) {
+                            $('body').find('[data-app="black-hole"]').find('[data-an="report-post"]').modal('hide');
+                            cl_bs_notify("<?php echo cl_translate("Post has been reported!"); ?>", 1000);
+                        }
+                        else {
+                            $('body').find('[data-app="black-hole"]').find('[data-an="report-post"]').modal('hide');
+                            cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>", 3000);
+                        }
                     });
                 }
             }

@@ -819,3 +819,30 @@ else if($action == 'search') {
         }
     }
 }
+//author : KSUN
+else if($action == 'report_an_issue'){
+    if (empty($cl["is_logged"])) {
+        $data['status'] = 400;
+        $data['error']  = 'Invalid access token';
+    }else{
+        $data['err_code'] = 0;
+        $data['status'] = 400;
+        $post_id = fetch_or_get($_POST['postId'], 0);
+        $report_id = fetch_or_get($_POST['reportId'], 0);
+
+        if (is_posnum($post_id)) {
+            $post_data = cl_raw_post_data($post_id);
+            if (not_empty($post_data)) {
+                $db->insert(T_REPORTS, array(
+                    'post_id' => $post_id,
+                    'user_id' => $me['id'],
+                    'report_id' => $report_id,
+                    'time' => time()
+                ));
+                $data['status'] = 200;
+                $data['message'] = $report_id;
+                $data['status_code'] = '1';
+            }
+        }
+    }
+}

@@ -32,3 +32,4 @@ define("T_BOOKMARKS", "cl_bookmarks");
 define("T_NOTIFS", "cl_notifications");
 define("T_CONFIGS", "cl_configs");
 define("T_VERIFICATIONS", "cl_verifications");
+define("T_REPORTS", "cl_reports");

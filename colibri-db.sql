@@ -340,6 +340,17 @@
     `time` INT(25) NOT NULL DEFAULT '0',    
   PRIMARY KEY  (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
 {%end%}
+-- author: KSUN
+{%begin%}
+  CREATE TABLE `cl_reports`  (`id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL DEFAULT '0',
+    `post_id` INT(11) NOT NULL DEFAULT '0',
+    `report_id` INT(11) NOT NULL DEFAULT '0',
+    `time` INT(25) NOT NULL DEFAULT  '0',
+    PRIMARY KEY  (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+{%end%}
+
 
 {%begin%}
   ALTER TABLE `cl_users` ADD `verified` ENUM('0','1') 
