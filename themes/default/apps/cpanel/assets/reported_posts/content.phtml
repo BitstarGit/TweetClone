@@ -1,0 +1,77 @@
+<div class="cp-app-container" data-app="reported_posts">
+    <div class="current-page-name">
+        <div class="lp">
+            <h2>
+                <?php echo cl_translate('Reported posts'); ?>
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="<?php echo cl_link('admin_panel'); ?>">
+                        <?php echo cl_translate('Control panel'); ?>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);">
+                        <?php echo cl_translate('Reported posts'); ?>
+                    </a>
+                </li> 
+            </ol>
+        </div>
+    </div>
+
+    <div class="d-block" id="vue-cpanel-reported-posts-app">
+        <div class="row clearfix">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card" data-an="info-content">
+                    <div class="header">
+                        <h2>
+                            <?php echo cl_translate('Manage reported posts'); ?> - ({{total_reported_posts}})
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="regular-table">
+                            <table class="table table-hover no-mb">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>
+                                            <?php echo cl_translate('Reporter Name'); ?>
+                                        </th>
+                                        <th>
+                                            <?php echo cl_translate('Post ID'); ?>
+                                        </th>
+                                        <th>
+                                            <?php echo cl_translate('Time'); ?>
+                                        </th>
+                                        <th>
+                                            <?php echo cl_translate('Action'); ?>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-an="users-list">
+                                    <?php if (not_empty($cl['reported_posts'])): ?>
+                                        <?php foreach ($cl['reported_posts'] as $cl['li']): ?>
+                                            <?php echo cl_template('cpanel/assets/reported_posts/includes/list_item'); ?>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <?php echo cl_template('cpanel/assets/reported_posts/includes/empty_table'); ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                            
+                            <a v-if="show_ctrls" v-bind:class="{'disabled': dis_prev_ctrl}" v-on:click="paginate('up')" href="javascript:void(0);" class="pagination-ctrls prev">
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+
+                            <a v-if="show_ctrls" v-bind:class="{'disabled': dis_next_ctrl}" v-on:click="paginate('down')" href="javascript:void(0);" class="pagination-ctrls next">
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo cl_template('cpanel/assets/reported_posts/scripts/app_master_script'); ?>

@@ -74,6 +74,17 @@
                 </span>
             </a>
         </li>
+<!--        author: KSUN-->
+<!--        reported posts-->
+        <li class="menu-list-item <?php if($cl["cp_section"] == 'reports') {echo('active');} ?>">
+            <a href="<?php echo cl_link('admin_panel/reported_posts'); ?>">
+                <i class="material-icons">report</i>
+                <span>
+                    <?php echo cl_translate('Reported posts'); ?>
+                </span>
+            </a>
+        </li>
+
         <li class="menu-list-item <?php if($cl["cp_section"] == 'backups') {echo('active');} ?>">
             <a href="<?php echo cl_link('admin_panel/backups'); ?>">
                 <i class="material-icons">backup</i>
@@ -121,6 +132,8 @@
                 </span>
             </a>
         </li>
+
+
     </ul>
     <div class="sb-footer">
         <small>
