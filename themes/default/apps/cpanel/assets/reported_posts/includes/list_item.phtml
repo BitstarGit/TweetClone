@@ -19,7 +19,9 @@
     </td>
     <td>
         <span>
-            <?php echo($cl['li']['post_id']); ?>
+             <a href="<?php echo($cl['li']['post_url']); ?>">
+                <?php echo($cl['li']['post_id']); ?>
+             </a>
         </span>
     </td>
     <td>
@@ -34,10 +36,10 @@
                 <a href="<?php echo($cl['li']['url']); ?>" class="dropdown-item">
                     <?php echo cl_translate('Recover'); ?>
                 </a>
-                <a href="javascript:void(0);" class="dropdown-item" onclick="SMC_CPanel.delete_user('<?php echo($cl['li']['id']); ?>');">
+                <a href="javascript:void(0);" class="dropdown-item" onclick="SMC_CPanel.delete_post('<?php echo($cl['li']['post_id']); ?>');">
                     <?php echo cl_translate('Delete'); ?>
                 </a>
-            </ul>
-        </div>
+                </ul>
+            </div>
     </td>
 </tr>

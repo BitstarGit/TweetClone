@@ -41,11 +41,12 @@ function cl_admin_get_reported_posts($args = array()) {
 
     if (cl_queryset($reported_posts)) {
         foreach ($reported_posts as $row) {
-            $row['time'] = date('d M, Y h:m',$row['time']);
+            $row['time']        = date('d M, Y h:m',$row['time']);
             $row['url']         = cl_link(cl_strf('@%s', $row['username']));
-            $row['username'] = $row['name'];
+            $row['username']    = $row['name'];
             $row['avatar']      = cl_get_media($row['avatar']);
-            $row['post_id']      = $row['post_id'];
+            $row['post_id']     = $row['post_id'];
+            $row['post_url']    =cl_link(cl_strf('thread/%d', $row['post_id']));
             $data[]             = $row;
         }
     }
