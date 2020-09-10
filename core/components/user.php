@@ -1,4 +1,4 @@
-<?php 
+<?php
 # @*************************************************************************@
 # @ @author Mansur Altamirov (Mansur_TL)                                    @
 # @ @author_url 1: https://www.instagram.com/mansur_tl                      @
@@ -13,7 +13,7 @@ function cl_get_ip() {
     if (not_empty($_SERVER['HTTP_CLIENT_IP']) && filter_var($_SERVER['HTTP_CLIENT_IP'], FILTER_VALIDATE_IP)) {
         return $_SERVER['HTTP_CLIENT_IP'];
     }
-    
+
     if (not_empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') !== false) {
             $iplist = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
@@ -22,7 +22,7 @@ function cl_get_ip() {
                     return $ip;
                 }
             }
-        } 
+        }
 
         else {
             if (filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP)){
@@ -34,19 +34,19 @@ function cl_get_ip() {
     if (not_empty($_SERVER['HTTP_X_FORWARDED']) && filter_var($_SERVER['HTTP_X_FORWARDED'], FILTER_VALIDATE_IP)) {
         return $_SERVER['HTTP_X_FORWARDED'];
     }
-        
+
     if (not_empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && filter_var($_SERVER['HTTP_X_CLUSTER_CLIENT_IP'], FILTER_VALIDATE_IP)) {
         return $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
     }
-        
+
     if (not_empty($_SERVER['HTTP_FORWARDED_FOR']) && filter_var($_SERVER['HTTP_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
         return $_SERVER['HTTP_FORWARDED_FOR'];
     }
-        
+
     if (not_empty($_SERVER['HTTP_FORWARDED']) && filter_var($_SERVER['HTTP_FORWARDED'], FILTER_VALIDATE_IP)) {
         return $_SERVER['HTTP_FORWARDED'];
     }
-        
+
     return $_SERVER['REMOTE_ADDR'];
 }
 
@@ -65,7 +65,7 @@ function cl_create_user_session($user_id = 0, $platform = 'web') {
 
     $insert              = $db->insert(T_SESSIONS, $insert_data);
     $_SESSION['user_id'] = $session_id;
-   
+
     setcookie("user_id", $session_id, time() + (10 * 365 * 24 * 60 * 60), '/') or die('unable to create cookie');
 
     return $insert;
@@ -88,8 +88,8 @@ function cl_is_logged($platform = "web") {
         if (is_numeric($id) && not_empty($id)) {
             return true;
         }
-    } 
-    
+    }
+
     else if (isset($_COOKIE['user_id']) && not_empty($_COOKIE['user_id'])) {
         $id = cl_get_userfromsession_id($_COOKIE['user_id']);
         if (is_numeric($id) && not_empty($id)) {
@@ -107,7 +107,7 @@ function cl_get_userfromsession_id($session_id, $platform = 'web') {
     if (empty($session_id)) {
         return false;
     }
-    
+
     $platform   = cl_text_secure($platform);
     $session_id = cl_text_secure($session_id);
     $return     = $db->where('session_id', $session_id);
@@ -119,7 +119,7 @@ function cl_update_user_data($user_id = null,$data = array()) {
     global $db;
     if ((not_num($user_id)) || (empty($data) || is_array($data) != true)) {
         return false;
-    } 
+    }
 
     $db     = $db->where('id', $user_id);
     $update = $db->update(T_USERS,$data);
@@ -145,7 +145,7 @@ function cl_user_data($user_id = 0) {
     global $db, $cl;
     if (not_num($user_id)) {
         return false;
-    } 
+    }
 
     $db        = $db->where('id', $user_id);
     $user_data = $db->getOne(T_USERS);
@@ -153,13 +153,13 @@ function cl_user_data($user_id = 0) {
     if (empty($user_data)) {
         return false;
     }
-  
+
     $user_data['name']         = cl_strf("%s %s",$user_data['fname'],$user_data['lname']);
-    $user_data['about']        = cl_rn_strip($user_data['about']);  
-    $user_data['about']        = stripcslashes($user_data['about']);  
-    $user_data['about']        = htmlspecialchars_decode($user_data['about'], ENT_QUOTES);   
+    $user_data['about']        = cl_rn_strip($user_data['about']);
+    $user_data['about']        = stripcslashes($user_data['about']);
+    $user_data['about']        = htmlspecialchars_decode($user_data['about'], ENT_QUOTES);
     $user_data['raw_uname']    = $user_data['username'];
-    $user_data['username']     = cl_strf("@%s",$user_data['username']);    
+    $user_data['username']     = cl_strf("@%s",$user_data['username']);
     $user_data['raw_avatar']   = $user_data['avatar'];
     $user_data['raw_cover']    = $user_data['cover'];
     $user_data['avatar']       = cl_get_media($user_data['avatar']);
@@ -178,7 +178,7 @@ function cl_raw_user_data($user_id = 0) {
     global $db;
     if (not_num($user_id)) {
         return false;
-    } 
+    }
 
     $db        = $db->where('id', $user_id);
     $user_data = $db->getOne(T_USERS);
@@ -222,6 +222,17 @@ function cl_signout_user_by_id($user_id = false) {
     return $qr;
 }
 
+function cl_delete_report_data($reportId = 0) {
+    global $db;
+    if (not_num($reportId)) {
+        return false;
+    }
+    $db        = $db->where('id', $reportId);
+    $qr = $db->delete(T_REPORTS);
+    return $qr;
+}
+
+
 function cl_delete_user_data($user_id = false) {
     global $db;
     if (not_num($user_id)) {
@@ -235,147 +246,147 @@ function cl_delete_user_data($user_id = false) {
         if (cl_queryset($user_data)) {
 
             /*===== Delete user notifications =====*/
-                $db = $db->where('notifier_id', $user_id);
-                $qr = $db->delete(T_NOTIFS);
+            $db = $db->where('notifier_id', $user_id);
+            $qr = $db->delete(T_NOTIFS);
 
-                $db = $db->where('recipient_id', $user_id);
-                $qr = $db->delete(T_NOTIFS);
+            $db = $db->where('recipient_id', $user_id);
+            $qr = $db->delete(T_NOTIFS);
             /*====================================*/
 
 
             /*===== Delete user bookmarks =====*/
-                $db = $db->where('user_id', $user_id);
-                $qr = $db->delete(T_BOOKMARKS);
+            $db = $db->where('user_id', $user_id);
+            $qr = $db->delete(T_BOOKMARKS);
             /*====================================*/
 
             /*===== Delete user likes =====*/
-                $db = $db->where('user_id', $user_id);
-                $qr = $db->get(T_LIKES);
+            $db = $db->where('user_id', $user_id);
+            $qr = $db->get(T_LIKES);
 
-                if (cl_queryset($qr)) {
-                    foreach ($qr as $row) {
-                        $post_data = cl_raw_post_data($row['pub_id']);
+            if (cl_queryset($qr)) {
+                foreach ($qr as $row) {
+                    $post_data = cl_raw_post_data($row['pub_id']);
 
-                        if (not_empty($post_data) && ($post_data['user_id'] != $user_id)) {
-                            $num = ($post_data['likes_count'] -= 1);
-                            $num = (is_posnum($num)) ? $num : 0;
-                            cl_update_post_data($row['pub_id'], array(
-                                'likes_count' => $num
-                            ));
-                        }
+                    if (not_empty($post_data) && ($post_data['user_id'] != $user_id)) {
+                        $num = ($post_data['likes_count'] -= 1);
+                        $num = (is_posnum($num)) ? $num : 0;
+                        cl_update_post_data($row['pub_id'], array(
+                            'likes_count' => $num
+                        ));
                     }
-
-                    $db = $db->where('user_id', $user_id);
-                    $qr = $db->delete(T_LIKES);
                 }
+
+                $db = $db->where('user_id', $user_id);
+                $qr = $db->delete(T_LIKES);
+            }
             /*====================================*/
 
             /*===== Delete user reposts =====*/
+            $db = $db->where('user_id', $user_id);
+            $db = $db->where('type', 'repost');
+            $qr = $db->get(T_POSTS);
+
+            if (cl_queryset($qr)) {
+                foreach ($qr as $row) {
+                    $post_data = cl_raw_post_data($row['publication_id']);
+
+                    if (not_empty($post_data) && ($post_data['user_id'] != $user_id)) {
+                        $num = ($post_data['reposts_count'] -= 1);
+                        $num = (is_posnum($num)) ? $num : 0;
+                        cl_update_post_data($row['publication_id'], array(
+                            'reposts_count' => $num
+                        ));
+                    }
+                }
+
                 $db = $db->where('user_id', $user_id);
                 $db = $db->where('type', 'repost');
-                $qr = $db->get(T_POSTS);
-
-                if (cl_queryset($qr)) {
-                    foreach ($qr as $row) {
-                        $post_data = cl_raw_post_data($row['publication_id']);
-
-                        if (not_empty($post_data) && ($post_data['user_id'] != $user_id)) {
-                            $num = ($post_data['reposts_count'] -= 1);
-                            $num = (is_posnum($num)) ? $num : 0;
-                            cl_update_post_data($row['publication_id'], array(
-                                'reposts_count' => $num
-                            ));
-                        }
-                    }
-
-                    $db = $db->where('user_id', $user_id);
-                    $db = $db->where('type', 'repost');
-                    $qr = $db->delete(T_POSTS);
-                }
+                $qr = $db->delete(T_POSTS);
+            }
             /*====================================*/
-            
+
             /*===== Delete user publications =====*/
-                $db = $db->where('user_id', $user_id);
-                $qr = $db->get(T_PUBS);
+            $db = $db->where('user_id', $user_id);
+            $qr = $db->get(T_PUBS);
 
-                if (cl_queryset($qr)) {
-                    foreach ($qr as $row) {
-                        if ($row['target'] == 'pub_reply') {
-                            cl_update_thread_replys($row['thread_id'], 'minus');
-                        }
-
-                        $db = $db->where('publication_id', $row['id']);
-                        $qr = $db->delete(T_POSTS);
-
-                        cl_recursive_delete_post($row['id']);
+            if (cl_queryset($qr)) {
+                foreach ($qr as $row) {
+                    if ($row['target'] == 'pub_reply') {
+                        cl_update_thread_replys($row['thread_id'], 'minus');
                     }
+
+                    $db = $db->where('publication_id', $row['id']);
+                    $qr = $db->delete(T_POSTS);
+
+                    cl_recursive_delete_post($row['id']);
                 }
+            }
             /*====================================*/
 
             /*===== Delete user chats =====*/
-                $db = $db->where('user_one', $user_id);
-                $qr = $db->delete(T_CHATS);
+            $db = $db->where('user_one', $user_id);
+            $qr = $db->delete(T_CHATS);
 
-                $db = $db->where('user_two', $user_id);
-                $qr = $db->delete(T_CHATS);
+            $db = $db->where('user_two', $user_id);
+            $qr = $db->delete(T_CHATS);
+
+            $db = $db->where('sent_by', $user_id);
+            $db = $db->where('sent_to', $user_id, '=', 'OR');
+            $qr = $db->get(T_MSGS);
+
+            if (cl_queryset($qr)) {
+                foreach ($qr as $row) {
+                    if (not_empty($row['media_file'])) {
+                        cl_delete_media($row['media_file']);
+                    }
+                }
 
                 $db = $db->where('sent_by', $user_id);
                 $db = $db->where('sent_to', $user_id, '=', 'OR');
-                $qr = $db->get(T_MSGS);
-
-                if (cl_queryset($qr)) {
-                    foreach ($qr as $row) {
-                        if (not_empty($row['media_file'])) {
-                            cl_delete_media($row['media_file']);
-                        }
-                    }
-
-                    $db = $db->where('sent_by', $user_id);
-                    $db = $db->where('sent_to', $user_id, '=', 'OR');
-                    $qr = $db->delete(T_MSGS);
-                }
+                $qr = $db->delete(T_MSGS);
+            }
             /*====================================*/
 
             /*===== Delete user connections =====*/
-                $db = $db->where('follower_id', $user_id);
-                $qr = $db->get(T_CONNECTIONS);
+            $db = $db->where('follower_id', $user_id);
+            $qr = $db->get(T_CONNECTIONS);
 
-                if (cl_queryset($qr)) {
-                    foreach ($qr as $row) {
-                        $user_data = cl_raw_user_data($row['following_id']);
+            if (cl_queryset($qr)) {
+                foreach ($qr as $row) {
+                    $user_data = cl_raw_user_data($row['following_id']);
 
-                        if (not_empty($user_data)) {
-                            $num = ($user_data['followers'] -= 1);
-                            $num = (is_posnum($num)) ? $num : 0;
-                            cl_update_user_data($user_data['id'], array(
-                                'followers' => $num
-                            ));
-                        }
+                    if (not_empty($user_data)) {
+                        $num = ($user_data['followers'] -= 1);
+                        $num = (is_posnum($num)) ? $num : 0;
+                        cl_update_user_data($user_data['id'], array(
+                            'followers' => $num
+                        ));
                     }
+                }
 
-                    $db = $db->where('follower_id', $user_id);
-                    $qr = $db->delete(T_CONNECTIONS);
+                $db = $db->where('follower_id', $user_id);
+                $qr = $db->delete(T_CONNECTIONS);
+            }
+
+            $db = $db->where('following_id', $user_id);
+            $qr = $db->get(T_CONNECTIONS);
+
+            if (cl_queryset($qr)) {
+                foreach ($qr as $row) {
+                    $user_data = cl_raw_user_data($row['follower_id']);
+
+                    if (not_empty($user_data)) {
+                        $num = ($user_data['following'] -= 1);
+                        $num = (is_posnum($num)) ? $num : 0;
+                        cl_update_user_data($user_data['id'], array(
+                            'following' => $num
+                        ));
+                    }
                 }
 
                 $db = $db->where('following_id', $user_id);
-                $qr = $db->get(T_CONNECTIONS);
-
-                if (cl_queryset($qr)) {
-                    foreach ($qr as $row) {
-                        $user_data = cl_raw_user_data($row['follower_id']);
-
-                        if (not_empty($user_data)) {
-                            $num = ($user_data['following'] -= 1);
-                            $num = (is_posnum($num)) ? $num : 0;
-                            cl_update_user_data($user_data['id'], array(
-                                'following' => $num
-                            ));
-                        }
-                    }
-
-                    $db = $db->where('following_id', $user_id);
-                    $qr = $db->delete(T_CONNECTIONS);
-                }
+                $qr = $db->delete(T_CONNECTIONS);
+            }
             /*====================================*/
 
             $db = $db->where('user_id', $user_id);
@@ -448,7 +459,7 @@ function cl_get_follow_suggestions($limit = 10, $offset = false) {
         foreach ($query_result as $row) {
             $row['about']       = cl_rn_strip($row['about']);
             $row['about']       = stripslashes($row['about']);
-            $row['name']        = cl_strf("%s %s",$row['fname'],$row['lname']);      
+            $row['name']        = cl_strf("%s %s",$row['fname'],$row['lname']);
             $row['avatar']      = cl_get_media($row['avatar']);
             $row['url']         = cl_link(cl_strf("@%s",$row['username']));
             $row['username']    = cl_strf("@%s",$row['username']);
@@ -474,7 +485,7 @@ function cl_is_following($follower_id = false, $following_id = false) {
     $db  = $db->where('follower_id', $follower_id);
     $db  = $db->where('following_id', $following_id);
     $res = $db->getValue(T_CONNECTIONS,'COUNT(id)');
-    
+
     return is_posnum($res);
 }
 
@@ -488,7 +499,7 @@ function cl_unfollow($follower_id = false, $following_id = false){
     $db = $db->where('follower_id', $follower_id);
     $db = $db->where('following_id', $following_id);
     $rm = $db->delete(T_CONNECTIONS);
-    
+
     return $rm;
 }
 
@@ -530,7 +541,7 @@ function cl_get_followers($user_id = false, $limit = 10, $offset = false) {
         foreach ($query_result as $row) {
             $row['about']        = cl_rn_strip($row['about']);
             $row['about']        = stripslashes($row['about']);
-            $row['name']         = cl_strf("%s %s",$row['fname'],$row['lname']);      
+            $row['name']         = cl_strf("%s %s",$row['fname'],$row['lname']);
             $row['avatar']       = cl_get_media($row['avatar']);
             $row['url']          = cl_link(cl_strf("@%s",$row['username']));
             $row['username']     = cl_strf("@%s",$row['username']);
@@ -542,7 +553,7 @@ function cl_get_followers($user_id = false, $limit = 10, $offset = false) {
                 $row['is_following'] = cl_is_following($cl['me']['id'], $row['id']);
 
                 if ($cl['me']['id'] == $row['id']) {
-                    $row['is_user'] = true; 
+                    $row['is_user'] = true;
                 }
             }
 
@@ -575,7 +586,7 @@ function cl_get_followings($user_id = false, $limit = 10, $offset = false) {
         foreach ($query_result as $row) {
             $row['about']        = cl_rn_strip($row['about']);
             $row['about']        = stripslashes($row['about']);
-            $row['name']         = cl_strf("%s %s",$row['fname'],$row['lname']);      
+            $row['name']         = cl_strf("%s %s",$row['fname'],$row['lname']);
             $row['avatar']       = cl_get_media($row['avatar']);
             $row['url']          = cl_link(cl_strf("@%s",$row['username']));
             $row['username']     = cl_strf("@%s",$row['username']);
@@ -587,7 +598,7 @@ function cl_get_followings($user_id = false, $limit = 10, $offset = false) {
                 $row['is_following'] = cl_is_following($cl['me']['id'], $row['id']);
 
                 if ($cl['me']['id'] == $row['id']) {
-                    $row['is_user'] = true; 
+                    $row['is_user'] = true;
                 }
             }
 
@@ -641,7 +652,7 @@ function cl_get_user_mentions($text = "") {
     $users = array();
 
     preg_match_all('/(?:^|\s|,)\B@([a-zA-Z0-9_]{4,32})/is', $text, $mentions);
-    
+
     if (is_array($mentions) && not_empty($mentions[1])) {
         $users = $mentions[1];
     }
